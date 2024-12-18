@@ -7,7 +7,7 @@ export function UsersLoader({ children }) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(fetchUsers.loaded) {
+        if(fetchUsers.loaded || fetchUsers.loading) {
             return;
         }
         dispatch(loading())
