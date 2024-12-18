@@ -1,4 +1,9 @@
-import { USER_UPDATE_ACTION } from "../constants/actions";
+import {
+  LOADED_ACTION,
+  LOADING_ACTION,
+  USER_FETCH_FULFILLED_ACTION,
+  USER_UPDATE_ACTION,
+} from "../constants/actions";
 
 export function updateUser(id, data) {
   return {
@@ -7,5 +12,23 @@ export function updateUser(id, data) {
       id,
       data,
     },
+  };
+}
+
+export function loading() {
+  return {
+    type: LOADING_ACTION,
+  };
+}
+export function loaded() {
+  return {
+    type: LOADED_ACTION,
+  };
+}
+
+export function fetchUsersFulfilled(users) {
+  return {
+    type: USER_FETCH_FULFILLED_ACTION,
+    payload: users,
   };
 }
