@@ -1,7 +1,7 @@
-import { useUsersStore } from "../zustand/users";
+import { useUsers } from "../hooks/users";
 
 export function LoadingState({ children }) {
-    const loading = useUsersStore((state) => state.loading);
+    const {loading} = useUsers()
 
     if(loading) {
         return <div>Loading...</div>

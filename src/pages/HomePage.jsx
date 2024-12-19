@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { GridComponent } from "../components/GridComponent";
 import { UserStat } from "../components/UserStat";
-import { useUsersStore } from "../zustand/users";
+import { useUsers } from "../hooks/users";
 
 function HomePage() {
-  const users = useUsersStore((state) => state.users);
+  const {users, update} = useUsers();
   const navigate = useNavigate();
 
   function toggleActiveRow(id, value) {
-    useUsersStore.getState().userUpdate(id, { active: value });
+    update(id, { active: value });
   } 
 
   function handleOnClick(id) {

@@ -1,16 +1,12 @@
 import { useEffect } from "react"
-import { useUsersStore } from "../zustand/users";
+import { useUsers } from "../hooks/users";
 
 export function UsersLoader({ children }) {
-
-    const needFetch = useUsersStore((state) => !state.loaded && !state.loading);
+    const {fetch} = useUsers();
 
     useEffect(() => { 
-        if(!needFetch) {
-            return
-        }
-        useUsersStore.getState().fetchUsers();
-    },[needFetch])
+        fetch();
+    },[])
 
     return <>
         {children}
