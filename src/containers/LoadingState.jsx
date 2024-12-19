@@ -1,7 +1,7 @@
-import { useSelector } from "react-redux";
+import { useUsersStore } from "../zustand/users";
 
 export function LoadingState({ children }) {
-    const loading = useSelector((state) => state.users.loading);
+    const loading = useUsersStore((state) => state.loading);
 
     if(loading) {
         return <div>Loading...</div>

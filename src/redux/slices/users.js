@@ -6,23 +6,7 @@ export const fetchUsersThunk = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetchUsersApi();
-      const mappedUsers = res.gridRecords.map((user) => {
-        const detail = res.detailsRecords.find(
-          (detail) => detail.id === user.id
-        );
-        return {
-          id: user.id,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          active: user.active,
-          details: {
-            about: detail.about,
-            hobby: detail.hobby,
-            skills: detail.skills,
-          },
-        };
-      });
-      return mappedUsers;
+      return res;
     } catch (error) {
       return rejectWithValue(error.message);
     }

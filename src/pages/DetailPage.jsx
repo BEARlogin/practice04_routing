@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import { UserDetail } from "../components/UserDetail";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useUsersStore } from "../zustand/users";
 
 function DetailPage() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const userDetailCandidate = useSelector(state => state.users.items.find(user => user.id === +id));
+  const userDetailCandidate = useUsersStore(state => state.users.find(user => user.id === +id));
 
   function onClickBack() {
     navigate(`/`);

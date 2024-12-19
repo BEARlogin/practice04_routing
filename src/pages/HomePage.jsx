@@ -1,16 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { GridComponent } from "../components/GridComponent";
 import { UserStat } from "../components/UserStat";
-import { useDispatch, useSelector } from "react-redux";
-import { userUpdate } from "../redux/slices/users";
+import { useUsersStore } from "../zustand/users";
 
 function HomePage() {
-  const users = useSelector((state) => state.users.items);
+  const users = useUsersStore((state) => state.users);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   function toggleActiveRow(id, value) {
-    dispatch(userUpdate({id, data: {active: value } }));
+    useUsersStore.getState().userUpdate(id, { active: value });
   } 
 
   function handleOnClick(id) {
