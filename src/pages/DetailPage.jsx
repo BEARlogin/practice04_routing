@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 function DetailPage() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const userDetailCandidate = useSelector(state => state.users.find(user => user.id === +id));
+  const userDetailCandidate = useSelector(state => state.users.items.find(user => user.id === +id));
 
   function onClickBack() {
     navigate(`/`);

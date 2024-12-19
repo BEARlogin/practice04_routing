@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 
 export function LoadingState({ children }) {
-    const loader = useSelector((state) => state.loader);
+    const loading = useSelector((state) => state.users.loading);
 
-    if(loader) {
+    if(loading) {
         return <div>Loading...</div>
     }
 
